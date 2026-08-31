@@ -34,6 +34,11 @@ class Messages(_Resource):
             body["limit"] = limit
         return self._data("/messages", body) or []
 
+    def folders(self, *, station: Optional[Any] = None) -> List[Dict[str, Any]]:
+        """List a station's folders (id, name, parent_id, count, icono, …)."""
+        body = {"station": station} if station is not None else {}
+        return self._data("/messages/folders", body) or []
+
     def get(self, message_id: Any) -> Dict[str, Any]:
         return self._data("/messages/detail", {"id": message_id})
 
