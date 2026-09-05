@@ -94,6 +94,12 @@ class Partners(_Resource):
     def create(self, **fields: Any) -> Dict[str, Any]:
         return self._data("/partners/create", fields)
 
+    def update(self, partner_id: Any, **fields: Any) -> Dict[str, Any]:
+        return self._data("/partners/update", {"id": partner_id, **fields})
+
+    def delete(self, partner_id: Any) -> Dict[str, Any]:
+        return self._data("/partners/delete", {"id": partner_id})
+
 
 class Certificates(_Resource):
     def list(self) -> List[Dict[str, Any]]:
@@ -119,6 +125,12 @@ class Stations(_Resource):
 
     def create(self, **fields: Any) -> Dict[str, Any]:
         return self._data("/stations/create", fields)
+
+    def update(self, station_id: Any, **fields: Any) -> Dict[str, Any]:
+        return self._data("/stations/update", {"id": station_id, **fields})
+
+    def delete(self, station_id: Any) -> Dict[str, Any]:
+        return self._data("/stations/delete", {"id": station_id})
 
 
 class Webhooks(_Resource):
